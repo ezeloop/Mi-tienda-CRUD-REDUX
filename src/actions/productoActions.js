@@ -6,9 +6,9 @@ import {
 
 //crear nuevos productos
 
-export function crearNuevoProductoAction() {
+export function crearNuevoProductoAction(producto) {
     return () => {
-        console.log('desde action')
+        console.log(producto)
     }
 }
 //ahora la uso en el componente, me voy a nuevo producto
