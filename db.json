@@ -1,29 +1,84 @@
 {
-    "productos": [
-      {
-        "id": 1,
-        "nombre": "Jugo de Zanahoria",
-        "precio": "31111"
-      },
-      {
-        "id": 2,
-        "nombre": "Jugo de Naranja",
-        "precio": "1"
-      },
-      {
-        "nombre": "Jugo de Naranja",
-        "precio": "300",
-        "id": 3
-      },
-      {
-        "nombre": "Rib Eye 800g",
-        "precio": "200",
-        "id": 4
-      },
-      {
-        "nombre": "Jugo de Fresa",
-        "precio": "200",
-        "id": 5
-      }
-    ]
-  }
+  "productos": [
+    {
+      "id": 1,
+      "nombre": "Jugo de Zanahoria",
+      "precio": "31111"
+    },
+    {
+      "id": 2,
+      "nombre": "Jugo de Naranja",
+      "precio": "1"
+    },
+    {
+      "nombre": "Jugo de Naranja",
+      "precio": "300",
+      "id": 3
+    },
+    {
+      "nombre": "Rib Eye 800g",
+      "precio": "200",
+      "id": 4
+    },
+    {
+      "nombre": "Jugo de Fresa",
+      "precio": "200",
+      "id": 5
+    },
+    {
+      "nombre": "vodka",
+      "precio": 500,
+      "id": 6
+    },
+    {
+      "nombre": "vodka",
+      "precio": 2,
+      "id": 7
+    },
+    {
+      "nombre": "vodka",
+      "precio": 11,
+      "id": 8
+    },
+    {
+      "nombre": "vodka",
+      "precio": 11,
+      "id": 9
+    },
+    {
+      "nombre": "vodka",
+      "precio": 1,
+      "id": 10
+    },
+    {
+      "nombre": "vodka",
+      "precio": 100,
+      "id": 11
+    },
+    {
+      "nombre": "vodka",
+      "precio": 1,
+      "id": 12
+    },
+    {
+      "nombre": "lapiz",
+      "precio": 1,
+      "id": 13
+    },
+    {
+      "nombre": "vodka",
+      "precio": 1111,
+      "id": 14
+    },
+    {
+      "nombre": "MULAN",
+      "precio": 111,
+      "id": 15
+    },
+    {
+      "nombre": "vodka",
+      "precio": 1,
+      "id": 16
+    }
+  ]
+}

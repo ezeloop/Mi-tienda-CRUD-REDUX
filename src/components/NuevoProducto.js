@@ -3,7 +3,8 @@ import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux'
 import { crearNuevoProductoAction } from '../actions/productoActions';
 
-const NuevoProducto = () => {
+const NuevoProducto = ({history}) => {
+    //puedo poner history asi porque como en el app dentro de los componentes lo rodea Router y ya recibe en el nav la route... por eso puedo usarlo asi
 
     //state del componente
     const [nombre, guardarNombre] = useState('')
@@ -12,6 +13,13 @@ const NuevoProducto = () => {
     //utilizar use dispatch  y te crea una funcion
     const dispatch = useDispatch();
 
+    //acceder al state del store
+    const cargando = useSelector( (state) => state.productos.loading)
+    //como hice (state) => state para ver que me tiraba, ahi averigue que se llama productos, y dentro el state q quiero loading
+
+    const error = useSelector( (state) => state.productos.error)
+
+
     const agregarProducto = producto => dispatch( crearNuevoProductoAction(producto) )
 
     //cuando el usuario haga submit
@@ -19,7 +27,7 @@ const NuevoProducto = () => {
         e.preventDefault();
 
         //validar formulario
-        if(nombre.trim() === '' || precio <= 0) {
+        if(nombre.trim() === '' || precio <= 0) { 
             return;
         }
 
@@ -32,6 +40,10 @@ const NuevoProducto = () => {
             nombre,
             precio
         });
+
+        //redireccionar a home
+        history.push('/');
+
     } 
     return ( 
         <div className="row justify-content-center">
@@ -71,6 +83,8 @@ const NuevoProducto = () => {
                                 className="btn btn-primary font-weight-bold text-uppercase d-block w-100"
                             >Agregar</button>
                         </form>
+                        { cargando ? <p>Cargando...</p> : null}
+                        {error ? <p className="alert alert-danger p2 mt-4 text-center">Hubo un error</p> : null}
                     </div>
                 </div>
             </div>
