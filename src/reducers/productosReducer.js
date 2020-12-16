@@ -4,7 +4,14 @@ import {
     AGREGAR_PRODUCTO_ERROR,
     COMENZAR_DESCARGA_PRODUCTOS,
     DESCARGA_PRODUCTOS_EXITO,
-    DESCARGA_PRODUCTOS_ERROR
+    DESCARGA_PRODUCTOS_ERROR,
+    OBTENER_PRODUCTO_ELIMINAR,
+    PRODUCTO_ELIMINADO_EXITO,
+    PRODUCTO_ELIMINADO_ERROR,
+    OBTENER_PRODUCTO_EDITAR,
+    COMENZAR_EDICION_PRODUCTO,
+    PRODUCTO_EDITADO_EXITO,
+    PRODUCTO_EDITADO_ERROR 
 } from '../types'
 
 //Cada reducer tiene su propio state
@@ -12,7 +19,9 @@ import {
 const initialState = {
     productos: [],
     error: false,
-    loading: false
+    loading: false,
+    productoeliminar: null,
+    productoeditar: null
 }
 
 export default function(state = initialState, action) {
@@ -33,7 +42,10 @@ export default function(state = initialState, action) {
                 //primero copia de el state de esos productos, y como en el action le pasamos el payload, lo recibimos poniendo action.payload
             }
 
+        case PRODUCTO_EDITADO_ERROR:
+        case DESCARGA_PRODUCTOS_ERROR:
         case AGREGAR_PRODUCTO_ERROR:
+        case PRODUCTO_ELIMINADO_ERROR:
             return {
                 ...state,
                 loading:false, //porq se estaba cargando cuando intento cargar el producto, hay q pararlo
@@ -48,7 +60,40 @@ export default function(state = initialState, action) {
                 productos: action.payload
             }
 
+        case OBTENER_PRODUCTO_ELIMINAR: 
+            return {
+                ...state,
+                productoeliminar: action.payload
+            }
+
+        case PRODUCTO_ELIMINADO_EXITO: 
+            return {
+                ...state,
+                productos: state.productos.filter( producto => producto.id !== state.productoeliminar),
+                productoeliminar: null
+            }
+
+        case OBTENER_PRODUCTO_EDITAR:
+            return {
+                ...state,
+                productoeditar: action.payload
+            }
+
+        case COMENZAR_EDICION_PRODUCTO:
+            return {
+                ...state
+            }
+
+        case PRODUCTO_EDITADO_EXITO: 
+            return {
+                ...state,
+                productoeditar : null,
+                //uso map porq tengo q comparar con el id, y guardar los mismos prod q tenia, por eso no uso filter
+                productos: state.productos.map( producto => 
+                    producto.id === action.payload.id ? producto = action.payload : producto
+                    )
+            }
         default:
-            return state;
+            return state; 
     }
 }
